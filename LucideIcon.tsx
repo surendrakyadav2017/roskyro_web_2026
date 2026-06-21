@@ -53,7 +53,8 @@ import {
   Users,
   Search,
   ShieldCheck,
-  Lightbulb
+  Lightbulb,
+  MessageCircle
 } from 'lucide-react';
 
 interface LucideIconProps {
@@ -119,7 +120,8 @@ export default function LucideIcon({ name, className = '', size = 20, style, ...
     Users,
     Search,
     ShieldCheck,
-    Lightbulb
+    Lightbulb,
+    MessageCircle
   };
 
   const IconComponent = iconMap[name] || Settings; // Fallback to Settings icon if not found
