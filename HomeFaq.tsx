@@ -1,61 +1,14 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import LucideIcon from './LucideIcon';
+import { HOME_FAQS } from './homeFaqData';
 
-const HOME_FAQS = [
-  {
-    question: 'What is ROSKYRO?',
-    answer:
-      'ROSKYRO is an AI Growth Technology Company based in India. It helps small and medium businesses become visible on Google Search, get recommended by AI tools like ChatGPT and Gemini, and build stronger online trust through automated systems for visibility, reputation, and lead generation.',
-  },
-  {
-    question: 'What services does ROSKYRO offer?',
-    answer:
-      'ROSKYRO offers Google Business Profile optimization, local SEO, AEO (Answer Engine Optimization), GEO (Generative Engine Optimization), online reputation and review management, WhatsApp Business API automation, AI chatbots, and CRM and lead generation systems — organized under its Knowledge, Yield, Reputation, and Optimization (K-Y-R-O) framework.',
-  },
-  {
-    question: 'Who is ROSKYRO for?',
-    answer:
-      'ROSKYRO is built for small and medium businesses and professionals in India — including clinics, CAs, lawyers, retail shops, and service providers — who want more customers from Google and AI search without managing the technical work themselves.',
-  },
-  {
-    question: 'How is ROSKYRO different from a marketing agency?',
-    answer:
-      'ROSKYRO builds AI-powered systems rather than running one-off marketing campaigns. The goal is measurable, ongoing visibility and automation — including how a business appears across both traditional search and newer AI answer engines — rather than time-limited service work.',
-  },
-  {
-    question: 'How can I get started with ROSKYRO?',
-    answer:
-      "Businesses can book a free visibility audit through the ROSKYRO website or WhatsApp. The audit reviews a business's current Google and online presence and outlines specific areas for improvement before any paid engagement begins.",
-  },
-];
-
+/**
+ * Visible FAQ section for the homepage. The matching FAQPage JSON-LD schema
+ * is injected by JsonLd.tsx at the app root (not here) so it loads at the
+ * same time as the rest of the page's structured data, rather than waiting
+ * for this component to mount lower on the page.
+ */
 export default function HomeFaq() {
-  useEffect(() => {
-    const existing = document.getElementById('roskyro-home-faq-jsonld');
-    if (existing) existing.remove();
-
-    const data = {
-      '@context': 'https://schema.org',
-      '@type': 'FAQPage',
-      mainEntity: HOME_FAQS.map((f) => ({
-        '@type': 'Question',
-        name: f.question,
-        acceptedAnswer: { '@type': 'Answer', text: f.answer },
-      })),
-    };
-
-    const script = document.createElement('script');
-    script.id = 'roskyro-home-faq-jsonld';
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(data);
-    document.head.appendChild(script);
-
-    return () => {
-      const el = document.getElementById('roskyro-home-faq-jsonld');
-      if (el) el.remove();
-    };
-  }, []);
-
   return (
     <section className="py-24 bg-slate-950 relative overflow-hidden border-t border-slate-900">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
