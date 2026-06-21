@@ -7,6 +7,13 @@ interface SeoProps {
   path: string; // e.g. "/" or "/services"
 }
 
+declare global {
+  interface Window {
+    dataLayer?: any[];
+    gtag?: (...args: any[]) => void;
+  }
+}
+
 /**
  * Lightweight per-page SEO updater for a client-side rendered SPA.
  *
@@ -17,6 +24,11 @@ interface SeoProps {
  * experience for crawlers and tools that DO execute JS (Googlebot generally
  * does), and keeps the browser tab / social-share metadata correct as the
  * user navigates between pages.
+ *
+ * It also fires a manual GA4 page_view on every route change. The base
+ * gtag.js snippet in index.html only fires one automatic page_view on
+ * initial load — without this, navigating between routes via React Router
+ * (no full page reload) would be invisible to Google Analytics.
  */
 export default function Seo({ title, description, path }: SeoProps) {
   useEffect(() => {
@@ -36,6 +48,14 @@ export default function Seo({ title, description, path }: SeoProps) {
     setMeta('meta[property="twitter:title"]', 'content', title);
     setMeta('meta[property="twitter:description"]', 'content', description);
     setMeta('link[rel="canonical"]', 'href', `${SITE.url}${path}`);
+
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'page_view', {
+        page_title: title,
+        page_path: path,
+        page_location: `${SITE.url}${path}`,
+      });
+    }
 
     window.scrollTo(0, 0);
   }, [title, description, path]);
