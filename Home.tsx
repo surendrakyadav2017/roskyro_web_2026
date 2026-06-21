@@ -5,6 +5,7 @@ import Hero from './Hero';
 import ProblemGaps from './ProblemGaps';
 import FeaturesHighlight from './FeaturesHighlight';
 import EarlyAccess from './EarlyAccess';
+import HomeFaq from './HomeFaq';
 import FinalCta from './FinalCta';
 
 interface HomeProps {
@@ -25,6 +26,7 @@ export default function Home({ onBookAudit }: HomeProps) {
       <ProblemGaps />
       <FeaturesHighlight />
       <EarlyAccess />
+      <HomeFaq />
       <FinalCta onBookAudit={onBookAudit} />
     </>
   );
