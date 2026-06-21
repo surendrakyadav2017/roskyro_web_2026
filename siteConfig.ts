@@ -11,7 +11,7 @@ export const SITE = {
     'ROSKYRO is an AI Growth Technology Company helping small and medium businesses across India get more customers, more trust, and more revenue through AI-powered visibility, reputation, and automation systems.',
   logoPath: '/logo.png',
   ogImage: '/og-image.png',
-  founderName: 'Founder, ROSKYRO',
+  founderName: 'Surendra Kumar Yadav, ROSKYRO',
   foundingYear: '2026',
 };
 
@@ -19,9 +19,9 @@ export const CONTACT = {
   whatsappNumber: '919244166752', // E.164 without the + (for wa.me links)
   displayPhone: '+91 92441 66752',
   email: 'roskyroofficial@gmail.com',
-  serviceArea: 'Pan-India (Remote-first) — HQ: Madhya Pradesh, India',
-  city: 'Jabalpur',
-  region: 'Madhya Pradesh',
+  serviceArea: 'Pan-India (Remote-first) — HQ: Chhattisgarh, India',
+  city: 'Ambikapur',
+  region: 'Chhattisgarh',
   country: 'IN',
 };
 
